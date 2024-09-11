@@ -1,0 +1,33 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <!-- Delivery Name TextView -->
+    <TextView
+        android:id="@+id/textViewDeliveryName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Delivery Name"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:paddingBottom="8dp"/>
+
+    <!-- Branch Name TextView -->
+    <TextView
+        android:id="@+id/textViewBranchName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Branch Name"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:paddingBottom="16dp"/>
+
+    <!-- Your RecyclerView for displaying items -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scrollbars="vertical" />
+</LinearLayout>

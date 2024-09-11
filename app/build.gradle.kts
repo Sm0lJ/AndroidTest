@@ -31,11 +31,13 @@ android {
 dependencies {
 
     implementation("com.squareup.okhttp3:okhttp:4.9.0")  // Latest OkHttp version
-
+    implementation ("com.google.code.gson:gson:2.8.8")
+    implementation ("androidx.recyclerview:recyclerview:1.2.1")
     implementation(libs.appcompat)
     implementation(libs.material)
     implementation(libs.activity)
     implementation(libs.constraintlayout)
+    implementation(libs.recyclerview)
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
