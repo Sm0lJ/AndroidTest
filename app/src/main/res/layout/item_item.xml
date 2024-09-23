@@ -21,19 +21,5 @@
         android:textSize="14sp"
         android:textColor="#666" />
 
-    <TextView
-        android:id="@+id/textViewPosition"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Position"
-        android:textSize="14sp"
-        android:textColor="#666" />
 
-    <Button
-        android:id="@+id/buttonAction"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Prepare"
-        android:layout_marginTop="16dp"
-        android:background="?attr/selectableItemBackground" />
 </LinearLayout>

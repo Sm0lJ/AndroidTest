@@ -14,14 +14,13 @@ import com.google.gson.Gson;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-import javax.net.ssl.HttpsURLConnection;
 
 public class FirstListActivity extends AppCompatActivity {
 
@@ -38,7 +37,8 @@ public class FirstListActivity extends AppCompatActivity {
         progressBar = findViewById(R.id.progressBar);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        String url = "https://10.0.2.2:7083/api/desktop/ExportScanning";
+      //  String url = "https://10.0.2.2:7083/api/desktop/ExportScanning";
+        String url = "http://10.0.2.5:80/api/desktop/ExportScanning";
         String clientId = "test-client-id";
         String clientSecret = "testClientSecret";
         new FetchDataTask().execute(url, clientId, clientSecret);
@@ -79,7 +79,7 @@ public class FirstListActivity extends AppCompatActivity {
 
         private List<Item> sendGetRequest(String urlString, String clientId, String clientSecret) throws Exception {
             URL url = new URL(urlString);
-            HttpsURLConnection conn = (HttpsURLConnection) url.openConnection();
+            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
             String credentials = clientId + ":" + clientSecret;
             String basicAuth = "Basic " + Base64.encodeToString(credentials.getBytes(), Base64.NO_WRAP);
             conn.setRequestProperty("Authorization", basicAuth);
@@ -88,7 +88,7 @@ public class FirstListActivity extends AppCompatActivity {
             conn.setReadTimeout(15000);
             conn.setDoInput(true);
             int responseCode = conn.getResponseCode();
-            if (responseCode == HttpsURLConnection.HTTP_OK) {
+            if (responseCode == HttpURLConnection.HTTP_OK) {
                 BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream()));
                 StringBuilder content = new StringBuilder();
                 String inputLine;

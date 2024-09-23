@@ -46,7 +46,8 @@ public class ItemListAdapter extends RecyclerView.Adapter<ItemListAdapter.ViewHo
         } else {
             holder.itemView.setBackgroundColor(holder.itemView.getResources().getColor(android.R.color.white));
         }
-        // Add more data binding as needed
+        holder.actionButton.setOnClickListener(v -> onItemButtonClickListener.onItemButtonClick(item));
+
     }
 
     @Override
@@ -65,7 +66,7 @@ public class ItemListAdapter extends RecyclerView.Adapter<ItemListAdapter.ViewHo
             productNameTextView = itemView.findViewById(R.id.textViewProductName);
             serialNumberTextView = itemView.findViewById(R.id.textViewSerialNumber);
             positionTextView = itemView.findViewById(R.id.textViewPosition);
-            actionButton = itemView.findViewById(R.id.buttonAction);
+            actionButton = itemView.findViewById(R.id.buttonScanner);
         }
     }
 }

@@ -1,5 +1,6 @@
 package com.example.test;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -52,10 +53,10 @@ public class ItemFragment extends Fragment {
         }
     }
     private void onItemButtonClick(Item item) {
-        // Handle button click here
-        Toast.makeText(getContext(), "Button clicked for item: " + item.getProductName(), Toast.LENGTH_SHORT).show();
-        // Implement your prepare logic here
+        Intent intent = new Intent(getActivity(), QRCodeScannerActivity.class);
+        startActivity(intent);
     }
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
