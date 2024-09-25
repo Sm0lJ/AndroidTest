@@ -27,7 +27,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".FirstListActivity"/>
         <activity android:name=".BranchListActivity"/>
         <activity android:name=".ItemListActivity"/>
         <activity android:name=".QRCodeScannerActivity" />

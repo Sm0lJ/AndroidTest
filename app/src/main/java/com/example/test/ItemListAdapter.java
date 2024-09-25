@@ -14,11 +14,9 @@ import java.util.List;
 public class ItemListAdapter extends RecyclerView.Adapter<ItemListAdapter.ViewHolder> {
 
     private final List<Item> items;
-    private final OnItemButtonClickListener onItemButtonClickListener;
 
-    public ItemListAdapter(List<Item> items, OnItemButtonClickListener onItemButtonClickListener) {
+    public ItemListAdapter(List<Item> items) {
         this.items = items;
-        this.onItemButtonClickListener = onItemButtonClickListener;
     }
 
     public interface OnItemButtonClickListener {
@@ -46,7 +44,6 @@ public class ItemListAdapter extends RecyclerView.Adapter<ItemListAdapter.ViewHo
         } else {
             holder.itemView.setBackgroundColor(holder.itemView.getResources().getColor(android.R.color.white));
         }
-        holder.actionButton.setOnClickListener(v -> onItemButtonClickListener.onItemButtonClick(item));
 
     }
 

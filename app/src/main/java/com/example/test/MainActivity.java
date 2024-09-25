@@ -4,7 +4,9 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
@@ -19,7 +21,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements OnScannerButtonClickListener {
 
     private List<Item> items;
     private Map<String, List<Item>> branchesByDelivery;
@@ -44,11 +46,35 @@ public class MainActivity extends AppCompatActivity {
         // Load the initial fragment (DeliveryFragment)
         loadFragment(new DeliveryFragment());
 
+
         // Initialize default values for employeeId and workPlaceId (can be updated later)
         employeeId = 0;
         workPlaceId = 0;
     }
+    public void onScanButtonClick() {
+        // Handle the scanner button click
+        // You can start the scanner activity or perform other actions here
+        Toast.makeText(this, "Scanner button clicked!", Toast.LENGTH_SHORT).show();
 
+        Intent intent = new Intent(MainActivity.this, QRCodeScannerActivity.class);
+        startActivity(intent);
+
+       /* Intent intent = new Intent(MainActivity.this, QRCodeScannerActivity.class);
+        intent.putExtra("employeeId", employeeId);  // Pass the employee ID
+        intent.putExtra("workPlaceId", workPlaceId);  // Pass the workplace ID
+        startActivityForResult(intent, SCAN_REQUEST_CODE); // Use a request code to identify the result
+    */
+    }
+    private static final int SCAN_REQUEST_CODE = 100; // Define a constant for the request code
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == SCAN_REQUEST_CODE && resultCode == RESULT_OK) {
+            String employee = data.getStringExtra("employee");
+            String workplace = data.getStringExtra("workplace");
+            updateEmployeeWorkplaceUI(employee, workplace);
+        }
+    }
     public void updateEmployeeWorkplaceUI(String employee, String workplace) {
         // Find the UI elements on the main screen
         TextView employeeTextView = findViewById(R.id.employeeTextView); // Make sure you have these in your layout

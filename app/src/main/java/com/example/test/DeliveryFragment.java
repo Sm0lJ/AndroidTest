@@ -1,15 +1,19 @@
 package com.example.test;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -28,7 +32,17 @@ public class DeliveryFragment extends Fragment {
         fragment.setArguments(args);
         return fragment;
     }
+    private OnScannerButtonClickListener scannerButtonClickListener;
 
+    @Override
+    public void onAttach(@NonNull Context context) {
+        super.onAttach(context);
+        try {
+            scannerButtonClickListener = (OnScannerButtonClickListener) context;
+        } catch (ClassCastException e) {
+            throw new ClassCastException(context.toString()
+                    + " must implement OnScannerButtonClickListener");
+        }}
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -55,6 +69,11 @@ public class DeliveryFragment extends Fragment {
             // Handle case when branchesByDelivery is null
             Toast.makeText(getContext(), "No deliveries available", Toast.LENGTH_SHORT).show();
         }
+        Button btnScanner = view.findViewById(R.id.buttonScanner);
+        btnScanner.setOnClickListener(v -> {
+            // Notify the activity that the scanner button was clicked
+            scannerButtonClickListener.onScanButtonClick();
+        });
 
         return view;
     }
