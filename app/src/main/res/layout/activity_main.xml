@@ -1,11 +1,60 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp">
 
-    <FrameLayout
-        android:id="@+id/fragmentContainer"
+    <!-- Worker TextView -->
+    <TextView
+        android:id="@+id/workerTextView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="wrap_content"
+        android:text="Worker"
+        android:textSize="18sp"
+        android:paddingBottom="8dp"/>
 
-</RelativeLayout>
+    <!-- Workplace TextView -->
+    <TextView
+        android:id="@+id/workplaceTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Workplace"
+        android:textSize="18sp"
+        android:paddingBottom="8dp"/>
+
+    <!-- Delivery TextView -->
+    <TextView
+        android:id="@+id/deliveryTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Delivery"
+        android:textSize="18sp"
+        android:paddingBottom="8dp"/>
+    <TextView
+        android:id="@+id/branchTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Branch"
+        android:textSize="18sp"
+        android:paddingBottom="8dp"/>
+
+    <!-- RecyclerView for Deliveries -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/itemsOfSelectionRecyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:paddingBottom="8dp"
+        android:scrollbars="vertical"/>
+
+    <!-- Branch TextView -->
+
+
+    <!-- Scanner Button -->
+    <Button
+        android:id="@+id/scannerButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Scanner"/>
+</LinearLayout>
